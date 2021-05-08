@@ -12,7 +12,8 @@ curl -sSf https://get.docker.com | bash
 # Configurando o Docker para deixar o usuario padrao com permissao pra usar o docker
 usermod -aG docker marco/kerberus
 
-
+# Rodando o container com o openvas na porta 443
 docker run -d -p 443:443 --name openvas mikesplain/openvas
 
+# Procedimento concluido
 echo "Processo concluido, baby"
