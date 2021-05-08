@@ -1,18 +1,21 @@
-# Remover os espaços no editor de texto
 #! /bin/bash
+# Lembre-se de rodar o script como root
 
-# Atualizando o sistema
 print("Comecando a atualizacao")
-time 5
+sleep 3
 apt update && apt upgrade -y && apt install curl -y && apt autoremove -y
 
 # Instalando o Docker
 curl -sSf https://get.docker.com | bash
 
 # Configurando o Docker para deixar o usuario padrao com permissao pra usar o docker
-usermod -aG docker marco/kerberus
+user= echo "Informe seu usuario: "
+group= echo "Informe seu grupo: "
+usermod -aG docker $user/$group
+print("Voce tem permissao para rodar os comandos do Docker")
+sleep 3
 
-# Rodando o container com o openvas na porta 443
+# Criando o container com o openvas na porta 443
 docker run -d -p 443:443 --name openvas mikesplain/openvas
 
 # Procedimento concluido
